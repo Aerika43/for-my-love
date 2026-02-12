@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Promise Day 🤞</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  height:100vh;
+  font-family:'Poppins',sans-serif;
+  background: radial-gradient(circle at top, #ff758c, #ff9ebc, #ffd6e8);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  overflow:hidden;
+  color:white;
+}
+
+/* Floating hearts */
+.heart{
+  position:absolute;
+  font-size:1.4rem;
+  animation: float linear infinite;
+  opacity:0.8;
+}
+
+@keyframes float{
+  0%{transform:translateY(110vh) scale(1)}
+  100%{transform:translateY(-15vh) scale(1.2)}
+}
+
+/* Card */
+.container{
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(14px);
+  padding:35px;
+  border-radius:30px;
+  width:90%;
+  max-width:440px;
+  box-shadow:0 25px 55px rgba(0,0,0,0.35);
+  animation: pop 1.4s ease;
+}
+
+@keyframes pop{
+  from{opacity:0; transform:scale(0.6)}
+  to{opacity:1; transform:scale(1)}
+}
+
+h1{
+  font-size:2.3rem;
+  margin-bottom:15px;
+  animation: glow 2s infinite alternate;
+  font-family:'Dancing Script',cursive;
+  font-size:3rem;
+  color:#7a1f4b;
+
+}
+
+@keyframes glow{
+  from{text-shadow:0 0 6px #fff}
+  to{text-shadow:0 0 22px #ff1e4d}
+}
+
+.promise{
+  font-size:1.05rem;
+  margin:8px 0;
+  opacity:0;
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.promise:nth-child(2){animation-delay:0.2s}
+.promise:nth-child(3){animation-delay:0.4s}
+.promise:nth-child(4){animation-delay:0.6s}
+.promise:nth-child(5){animation-delay:0.8s}
+.promise:nth-child(6){animation-delay:1s}
+.promise:nth-child(7){animation-delay:1.2s}
+.promise:nth-child(8){animation-delay:1.4s}
+.promise:nth-child(9){animation-delay:1.6s}
+.promise:nth-child(10){animation-delay:1.8s}
+.promise:nth-child(11){animation-delay:2s}
+
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(15px)}
+  to{opacity:1; transform:translateY(0)}
+}
+
+.final{
+  font-size:1.2rem;
+  margin-top:18px;
+  font-weight:600;
+  animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.08)}
+  100%{transform:scale(1)}
+}
+
+button{
+  margin-top:20px;
+  background:#ff1e4d;
+  border:none;
+  color:white;
+  padding:14px 34px;
+  border-radius:35px;
+  font-size:1rem;
+  cursor:pointer;
+  transition:0.3s ease;
+}
+
+button:hover{
+  background:#ff4f81;
+  transform:scale(1.1);
+}
+
+.back{
+  margin-top:12px;
+  background:rgba(255,255,255,0.25);
+}
+
+
+
+
+</style>
+</head>
+
+<body>
+
+<!-- Floating hearts -->
+<script>
+for(let i=0;i<25;i++){
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="💗";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=(5+Math.random()*6)+"s";
+  document.body.appendChild(h);
+}
+</script>
+
+<div class="container">
+  <h1>My Promises 🤞</h1>
+
+  <div class="promise">1. I choose you</div>
+  <div class="promise">2. I stay</div>
+  <div class="promise">3. I protect us</div>
+  <div class="promise">4. I support you</div>
+  <div class="promise">5. I grow with you</div>
+  <div class="promise">6. I listen</div>
+  <div class="promise">7. I respect you</div>
+  <div class="promise">8. I laugh with you</div>
+  <div class="promise">9. I love you loudly</div>
+
+  <div class="final">10. I promise forever ❤️</div>
+
+  <button onclick="location.href='days.html'" class="back">⬅ Back</button>
+</div>
+
+
+</body>
+</html>

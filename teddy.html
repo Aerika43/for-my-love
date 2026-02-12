@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Teddy Day 🧸</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{box-sizing:border-box}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+
+body{
+   margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:#ffe4f1;
+  text-align:center;
+  color:#7a1f4b;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;   /* changed */
+  min-height:100vh;
+  padding:40px 20px 80px 20px;  /* extra bottom space */
+  position:relative;
+  overflow-x:hidden;
+}
+
+h1{
+  font-size:2.2rem;
+  margin-bottom:10px;
+}
+
+p{
+  font-size:1.1rem;
+  margin:10px 20px;
+}
+
+/* Floating teddies */
+.teddy{
+  position:fixed;
+  font-size:40px;
+  animation:floatUp linear infinite;
+  z-index:-1;
+}
+
+@keyframes floatUp{
+  from{transform:translateY(110vh)}
+  to{transform:translateY(-10vh)}
+}
+
+/* Teddy card */
+.card{
+  background:white;
+  padding:30px;
+  border-radius:30px;
+  margin:25px 0;
+  width:90%;
+  max-width:360px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+  animation:pop 0.8s ease;
+  z-index:5;
+}
+
+@keyframes pop{
+  from{transform:scale(0.8);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+
+.card img{
+  width:100%;
+  max-width:180px;
+  border-radius:20px;
+}
+
+/* Button */
+button{
+ position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  padding:12px 26px;
+  border:none;
+  border-radius:30px;
+  background:#ff5fa2;
+  color:white;
+  font-size:1rem;
+  cursor:pointer;
+  transition:0.3s ease;
+}
+
+button:hover{
+  background:#ff2f8a;
+  transform:scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<h1>Happy Teddy Day 🧸</h1>
+<p>A teddy is a hug you can hold forever… just like my love for you ❤️</p>
+
+<div class="card">
+  <img src="sleep.jpeg" alt="Teddy">
+  <p>
+    Whenever you feel lonely,<br>
+    just remember this teddy carries<br>
+    all my hugs for you 🥹❤️
+  </p>
+</div>
+
+<button onclick="location.href='days.html'">Back to Valentine Week 💘</button>
+
+<script>
+/* Floating teddies */
+setInterval(()=>{
+  const t=document.createElement("div");
+  t.className="teddy";
+  t.innerHTML="🧸";
+  t.style.left=Math.random()*100+"vw";
+  t.style.animationDuration=(Math.random()*3+4)+"s";
+  document.body.appendChild(t);
+  setTimeout(()=>t.remove(),7000);
+},400);
+</script>
+
+</body>
+</html>

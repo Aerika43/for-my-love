@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine Week 💘</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Handwriting Font -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  height:100vh;          /* 🔥 important */
+  overflow:hidden;       /* 🔥 no scroll */
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background-image:url("couple.jpg");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  font-family:'Dancing Script', cursive;
+}
+
+section{
+  width:100%;
+  max-width:720px;
+  padding:20px;
+  background: transparent;
+}
+
+h2{
+  text-align:center;
+  color:#ff1f6d;
+  text-shadow:
+    0 2px 6px rgba(0,0,0,0.3),
+    0 0 12px rgba(255,31,109,0.8);
+  margin-bottom:35px;
+  font-size:36px;
+  text-shadow:0 4px 10px rgba(0,0,0,0.25);
+}
+
+/* GRID */
+.days{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;              /* 🔥 reduced */
+  justify-items:center;
+}
+/* WRAPPER */
+.heart-wrap{
+  width:150px;           /* 🔥 smaller */
+  height:135px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+/* HEART SHAPE */
+.heart{
+  position:relative;
+  width:90px;            /* 🔥 smaller */
+  height:82px;
+  background:#ff4d6d;
+  transform:rotate(-45deg);
+  cursor:pointer;
+  animation:heartbeat 1.6s infinite;
+  z-index:1;
+}
+
+.heart::before,
+.heart::after{
+  content:"";
+  position:absolute;
+  width:90px;
+  height:82px;
+  background:#ff4d6d;
+  border-radius:50%;
+  z-index:-1;
+}
+
+.heart::before{
+  top:-45px;
+  left:0;
+}
+
+.heart::after{
+  left:45px;
+  top:0;
+}
+
+.heart span{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) rotate(45deg);
+  z-index:10;
+  color:#fff;
+  font-size:15px;        /* 🔥 adjusted */
+  font-weight:700;
+  line-height:1.15;
+  text-align:center;
+  text-shadow:0 3px 6px rgba(0,0,0,0.4);
+  pointer-events:none;
+}
+
+
+/* SPECIAL */
+.special-wrap{
+  grid-column:1/-1;
+}
+.special,
+.special::before,
+.special::after{
+  background:#d63384;
+}
+
+/* HOVER */
+.heart:hover{
+  animation:none;
+  transform:rotate(-45deg) scale(1.18);
+  box-shadow:0 0 25px rgba(255,255,255,0.8);
+}
+
+/* ANIMATION */
+@keyframes heartbeat{
+  0%{transform:rotate(-45deg) scale(1)}
+  50%{transform:rotate(-45deg) scale(1.1)}
+  100%{transform:rotate(-45deg) scale(1)}
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  .days{
+    grid-template-columns:repeat(2,1fr);
+  }
+  h2{
+    font-size:30px;
+  }
+}
+/* BACKGROUND FALLING HEARTS */
+/* STRAIGHT FALLING HEARTS */
+.bg-heart{
+  position:fixed;
+  top:-10%;
+  pointer-events:none;
+  z-index:0;
+  opacity:0.8;
+  animation:fallStraight linear infinite;
+  filter:drop-shadow(0 0 6px rgba(255,255,255,0.6));
+}
+
+@keyframes fallStraight{
+  0%{
+    transform:translateY(0);
+    opacity:0;
+  }
+  10%{
+    opacity:1;
+  }
+  100%{
+    transform:translateY(110vh);
+    opacity:0;
+  }
+}
+
+/* Keep main content above hearts */
+section{
+  position:relative;
+  z-index:2;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh);
+    opacity:0;
+  }
+}
+
+/* Keep content above hearts */
+section{
+  position:relative;
+  z-index:2;
+}
+
+</style>
+</head>
+
+<body>
+<section>
+  <h2>Valentine Week 💘</h2>
+
+  <div class="days">
+    <div class="heart-wrap">
+      <div class="heart" onclick="location.href='rose.html'">
+        <span>🌹<br>Rose Day</span>
+      </div>
+    </div>
+
+    <div class="heart-wrap">
+      <div class="heart" onclick="location.href='propose.html'">
+        <span>💍<br>Propose Day</span>
+      </div>
+    </div>
+
+    <div class="heart-wrap">
+      <div class="heart" onclick="location.href='chocolate.html'">
+        <span>🍫<br>Chocolate Day</span>
+      </div>
+    </div>
+
+    <div class="heart-wrap">
+      <div class="heart" onclick="location.href='teddy.html'">
+        <span>🧸<br>Teddy Day</span>
+      </div>
+    </div>
+
+    <div class="heart-wrap">
+      <div class="heart" onclick="location.href='promise.html'">
+        <span>🤞<br>Promise Day</span>
+      </div>
+    </div>
+
+    <div class="heart-wrap">
+      <div class="heart" onclick="location.href='hug-kiss.html'">
+        <span>🤗💋<br>Hug & Kiss</span>
+      </div>
+    </div>
+
+    <div class="heart-wrap special-wrap">
+      <div class="heart special" onclick="location.href='valentine.html'">
+        <span>❤️<br>Valentine’s Day</span>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+for(let i=0;i<30;i++){
+  let heart=document.createElement("div");
+  heart.className="bg-heart";
+  heart.innerHTML="❤️";
+
+
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.fontSize=12+Math.random()*20+"px";
+  heart.style.animationDuration=6+Math.random()*6+"s";
+  heart.style.animationDelay=Math.random()*6+"s";
+
+  document.body.appendChild(heart);
+}
+
+const hearts = ["❤️","💖","💕","💗","🤍","💘","💝"];
+
+for(let i=0;i<40;i++){
+  let h = document.createElement("div");
+  h.className = "bg-heart";
+  h.innerHTML = hearts[Math.floor(Math.random()*hearts.length)];
+
+  h.style.left = Math.random()*100 + "vw";
+  h.style.fontSize = 12 + Math.random()*20 + "px";
+  h.style.animationDuration = 6 + Math.random()*6 + "s";
+  h.style.animationDelay = Math.random()*6 + "s";
+
+  const colors = ["#ff4d6d","#ff85a1","#ffd6e0","#ffffff"];
+  h.style.color = colors[Math.floor(Math.random()*colors.length)];
+
+  document.body.appendChild(h);
+}
+
+
+
+
+</script>
+</body>
+</html>

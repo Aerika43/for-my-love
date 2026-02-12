@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine Quiz 💕</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background: linear-gradient(180deg, #1a0011, #33001f, #4d0026);
+  text-align:center;
+  overflow:hidden;
+  color:#fff;
+}
+
+section{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.hidden{display:none}
+
+/* OPTIONS */
+.options{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  margin-top:25px;
+  width:100%;
+  max-width:320px;
+}
+
+.options button{
+  width:100%;
+  padding:16px;
+  font-size:1rem;
+  border:none;
+  border-radius:40px;
+  cursor:pointer;
+  background:#fff;
+  color:#7a1f4b;
+  font-weight:600;
+  box-shadow:0 6px 15px rgba(0,0,0,0.1);
+  transition:0.3s;
+}
+
+.options button:hover{transform:scale(1.05)}
+.options button.selected{border:2px solid #ff4f8b}
+.options button.wrong{background:#ffd1d1}
+.options button.correct{background:#b6f2c2}
+
+/* HINT */
+.hint{
+  color:#7a1f4b;
+  margin-top:18px;
+  font-weight:bold;
+  display:none;
+}
+
+/* CORRECT POPUP */
+.correctPopup{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:#fff;
+  padding:25px 35px;
+  border-radius:25px;
+  box-shadow:0 15px 30px rgba(0,0,0,0.25);
+  z-index:1000;
+  text-align:center;
+  animation:pop 0.4s ease;
+}
+
+.correctPopup h2{
+  color:#ff4f8b;
+}
+
+@keyframes pop{
+  from{transform:translate(-50%,-60%) scale(0.8);opacity:0;}
+  to{transform:translate(-50%,-50%) scale(1);opacity:1;}
+}
+
+/* HEART ANIMATION */
+.heart{
+  position:fixed;
+  bottom:20px;
+  font-size:24px;
+  animation:float 2s ease-out forwards;
+  pointer-events:none;
+}
+button{
+  background:#ff1e4d;
+  border:none;
+  color:white;
+  padding:14px 28px;
+  border-radius:30px;
+  font-size:1rem;
+  cursor:pointer;
+  animation: heartbeat 1.5s infinite;
+}
+
+@keyframes float{
+  from{transform:translateY(0) scale(1);opacity:1;}
+  to{transform:translateY(-220px) scale(1.8);opacity:0;}
+}
+.bg-heart{
+  position:fixed;
+  top:-10%;
+  font-size:22px;
+  opacity:0.6;
+  animation:fall linear infinite;
+  pointer-events:none;
+  z-index:0;
+}
+@keyframes fall{
+  from{
+    transform:translateY(0) scale(1);
+    opacity:0.8;
+  }
+  to{
+    transform:translateY(120vh) scale(1.3);
+    opacity:0;
+  }
+}
+
+/* Keep content above hearts */
+section, .correctPopup{
+  position:relative;
+  z-index:5;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Q1 -->
+<section id="q1">
+  <h2>💖 Who loves more?</h2>
+  <div class="options" data-correct="1">
+    <button>Me (but Aerika is close 😌)</button>
+    <button>Aerika (and I’m lucky 🥹)</button>
+    <button>Both of us 💕</button>
+    <button>We’re obsessed 😏</button>
+  </div>
+  <p class="hint">Hint: Someone made this whole website 😉</p>
+</section>
+
+<!-- Q2 -->
+<section id="q2" class="hidden">
+  <h2>😏 Do you miss Aerika right now?</h2>
+  <div class="options" data-correct="2">
+    <button>Yes</button>
+    <button>YESSS</button>
+    <button>I miss her even when she’s with me</button>
+    <button>All of the above</button>
+  </div>
+  <p class="hint">Hint: Love doesn’t switch off 😌</p>
+</section>
+
+<!-- Q3 -->
+<section id="q3" class="hidden">
+  <h2>🔥 If Aerika appeared right now?</h2>
+  <div class="options" data-correct="0">
+    <button>Hug her forever</button>
+    <button>Kiss her</button>
+    <button>Smile like an idiot</button>
+    <button>All of the above</button>
+  </div>
+  <p class="hint">Hint: Start with comfort ❤️</p>
+</section>
+
+<!-- Q4 -->
+<section id="q4" class="hidden">
+  <h2>😌 Are you choosing Aerika always?</h2>
+  <div class="options" data-correct="3">
+    <button>Today</button>
+    <button>Tomorrow</button>
+    <button>Always</button>
+    <button>Why is this even a question 🙄❤️</button>
+  </div>
+  <p class="hint">Hint: The most confident answer 😉</p>
+</section>
+
+<!-- Q5 -->
+<section id="q5" class="hidden">
+  <h2>🥹 Do you promise to love her forever?</h2>
+  <div class="options" data-correct="0">
+    <button>I already signed the contract ❤️</button>
+    <button>Yes</button>
+    <button>Extra hugs instead</button>
+    <button>Obviously yes</button>
+  </div>
+  <p class="hint">Hint: Lifetime commitment 😏</p>
+
+</section>
+<section id="done" class="hidden">
+  <h2>🎉 Quiz Complete!</h2>
+  <p>You officially unlocked Valentine Week 💘</p>
+
+  <button onclick="goBack()" style="margin-top:20px; animation:none;">
+    ⬅ Back to Valentine Week
+  </button>
+</section>
+
+<script>
+document.querySelectorAll(".options").forEach(options=>{
+  const buttons = options.querySelectorAll("button");
+  const section = options.closest("section");
+  const hint = section.querySelector(".hint");
+  const correctIndex = parseInt(options.dataset.correct);
+
+  buttons.forEach((btn,index)=>{
+    btn.addEventListener("click",()=>{
+
+      // reset styles
+      buttons.forEach(b=>b.classList.remove("selected","wrong","correct"));
+      btn.classList.add("selected");
+
+      // ❌ WRONG ANSWER → stay on same question
+      if(index !== correctIndex){
+        btn.classList.add("wrong");
+        hint.style.display = "block";
+        return; // ⛔ STOP HERE
+      }
+
+      // ✅ CORRECT ANSWER
+      btn.classList.add("correct");
+      hint.style.display = "none";
+      showCorrectPopup();
+      celebrate();
+
+      setTimeout(()=>{
+        section.classList.add("hidden");
+        const next = section.nextElementSibling;
+
+        if(next){
+          next.classList.remove("hidden");
+          next.scrollIntoView({behavior:"smooth"});
+        } else {
+          // 🎉 QUIZ FINISHED
+          sessionStorage.setItem("quizDone", "true");
+          window.location.href = "main.html";
+            section.classList.add("hidden");
+  document.getElementById("done").classList.remove("hidden");
+  document.getElementById("done").scrollIntoView({behavior:"smooth"});
+        }
+      },1200);
+    });
+  });
+});
+
+function showCorrectPopup(){
+  const pop = document.createElement("div");
+  pop.className = "correctPopup";
+  pop.innerHTML = `<h2>💖 Correct!</h2><p>You know her too well 😌</p>`;
+  document.body.appendChild(pop);
+  setTimeout(()=>pop.remove(),1200);
+}
+function createBgHearts(){
+  const heart = document.createElement("div");
+  heart.className = "bg-heart";
+  heart.innerText = ["❤️","💖","💕","💘","💗"][Math.floor(Math.random()*5)];
+  heart.style.left = Math.random()*100 + "vw";
+  heart.style.animationDuration = (5 + Math.random()*4) + "s";
+  document.body.appendChild(heart);
+
+  setTimeout(()=>heart.remove(),9000);
+}
+
+setInterval(createBgHearts, 400);
+function celebrate(){
+  for(let i=0;i<18;i++){
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = ["💖","💕","🥰","✨","💘"][Math.floor(Math.random()*5)];
+    heart.style.left = Math.random()*100 + "vw";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),2000);
+  }
+}
+function goBack(){
+  window.location.href = "days.html";
+}
+
+
+
+</script>
+
+</body>
+</html>

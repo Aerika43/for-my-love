@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  height:100vh;
+  background:linear-gradient(180deg,#0f2027,#203a43,#2c5364);
+  color:#fff;
+  font-family:'Poppins',sans-serif;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  text-align:center;
+}
+
+/* subtle stars */
+.star{
+  position:absolute;
+  width:2px;
+  height:2px;
+  background:white;
+  border-radius:50%;
+  opacity:0.8;
+  animation: twinkle 3s infinite alternate;
+}
+@keyframes twinkle{
+  from{opacity:0.3}
+  to{opacity:1}
+}
+
+/* main content */
+.wrapper{
+  max-width:500px;
+  padding:30px;
+}
+
+h1{
+  font-family:'Dancing Script',cursive;
+  font-size:2.8rem;
+  margin-bottom:18px;
+  letter-spacing:1px;
+}
+
+.line{
+  font-size:1.1rem;
+  margin:12px 0;
+  opacity:0;
+  animation: reveal 1s ease forwards;
+}
+
+.line:nth-child(2){animation-delay:0.4s}
+.line:nth-child(3){animation-delay:0.5s}
+.line:nth-child(4){animation-delay:0.6s}
+
+@keyframes reveal{
+  from{opacity:0;transform:translateY(15px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.heartBeat{
+  font-size:3.8rem;
+  margin:24px 0;
+  animation: beat 1.4s infinite;
+}
+@keyframes beat{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.2)}
+  100%{transform:scale(1)}
+}
+
+button{
+  margin-top:26px;
+  padding:14px 36px;
+  border-radius:40px;
+  border:none;
+  background:#ff4d6d;
+  color:white;
+  font-size:1rem;
+  cursor:pointer;
+  transition:0.3s ease;
+}
+
+button:hover{
+  background:#ff758f;
+  transform:scale(1.08);
+}
+
+.back{
+  margin-top:16px;
+  background:transparent;
+  border:1px solid rgba(255,255,255,0.6);
+}
+.back:hover{
+  background:rgba(255,255,255,0.15);
+}
+
+.photos{
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  margin-top:25px;
+}
+
+.photos img{
+  width:200px;
+  height:250px;
+  object-fit:cover;
+  border-radius:12px;
+  opacity:0;
+  transform:scale(0.6);
+  animation: pop 0.6s forwards;
+}
+
+.photos img:nth-child(1){animation-delay:2s}
+.photos img:nth-child(2){animation-delay:3s}
+.photos img:nth-child(3){animation-delay:4s}
+
+@keyframes pop{
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+.memories-btn{
+  margin-top:30px;
+  padding:14px 36px;
+  border-radius:40px;
+  border:none;
+  background:#ff4d6d;
+  color:white;
+  font-size:1rem;
+  cursor:pointer;
+  transition:0.3s ease;
+}
+
+</style>
+</head>
+
+<body>
+
+<script>
+for(let i=0;i<80;i++){
+  let s=document.createElement("div");
+  s.className="star";
+  s.style.left=Math.random()*100+"vw";
+  s.style.top=Math.random()*100+"vh";
+  s.style.animationDuration=(2+Math.random()*4)+"s";
+  document.body.appendChild(s);
+}
+
+</script>
+
+<div class="wrapper">
+  <h1>Valentine ❤️</h1>
+
+  <div class="line">I Love You Rishi.</div>
+  <div class="line">You are my Everything.</div>
+  <div class="line">You became my forever.</div>
+
+  <div class="heartBeat">❤️</div>
+
+  <button onclick="alert('And I’d choose you again, every lifetime.')">
+    Choose You Again
+  </button>
+
+  <br>
+  <button class="back" onclick="location.href='days.html'">Back</button>
+</div>
+
+
+<div class="photos">
+  <img src="me.jpeg">
+  <img src="hug.jpeg">
+  <img src="kiss.jpeg">
+</div>
+<div style="text-align:center;">
+  <button class="memories-btn" onclick="location.href='memories.html'">
+    Our Memories 💞
+    Click me
+  </button>
+</div>
+
+</body>
+</html>

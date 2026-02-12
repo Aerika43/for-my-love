@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Rose Day ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Dancing Script', cursive;
+  height:100vh;
+  background: radial-gradient(circle at top, #ff4f81, #ff85a2, #ffd1dc);
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  text-align:center;
+}
+
+/* Floating roses */
+.rose{
+  position:absolute;
+  font-size:2rem;
+  animation: float linear infinite;
+  opacity:0.85;
+}
+
+@keyframes float{
+  0%{transform:translateY(110vh) rotate(0deg)}
+  100%{transform:translateY(-15vh) rotate(360deg)}
+}
+
+.container{
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(14px);
+  padding:45px;
+  border-radius:35px;
+  width:95%;
+  max-width:520px;
+  box-shadow:0 20px 50px rgba(0,0,0,0.35);
+  
+}
+
+
+@keyframes pop{
+  from{opacity:0; transform:scale(0.6)}
+  to{opacity:1; transform:scale(1)}
+}
+
+h1{
+  font-size:2.2rem;
+  margin-bottom:12px;
+  font-weight: 700;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+  from{text-shadow:0 0 6px #fff}
+  to{text-shadow:0 0 22px #ff1e4d}
+}
+
+.rose-icon{
+  font-size:4rem;
+  margin:15px 0;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.12)}
+  100%{transform:scale(1)}
+}
+
+p{
+  font-size:1.05rem;
+  line-height:1.6;
+  font-weight: 500;
+  margin-bottom:22px;
+
+}
+
+
+
+button{
+  background:#ff1e4d;
+  border:none;
+  color:white;
+  padding:14px 30px;
+  border-radius:35px;
+  font-size:1rem;
+  cursor:pointer;
+  transition:0.3s ease;
+}
+
+button:hover{
+  background:#ff4f81;
+  transform:scale(1.08);
+}
+
+.heart-btn{
+  margin-top:10px;
+  animation: heartbeat 1.4s infinite;
+}
+
+@keyframes heartbeat{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.1)}
+  100%{transform:scale(1)}
+}
+
+.love{
+  display:none;
+  font-size:1.2rem;
+  margin-top:22px;
+  animation: reveal 1s ease forwards;
+}
+
+@keyframes reveal{
+  from{opacity:0; transform:scale(0.7)}
+  to{opacity:1; transform:scale(1)}
+}
+/* Photo section */
+.photos{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  margin-top:25px;
+}
+.photo{
+  width:200px;
+  height:250px;
+  object-fit:cover;
+  border-radius:12px;
+  overflow:hidden;
+  opacity:0;
+  transform:translateY(20px);
+  transition:0.6s ease;
+}
+.photos.show .photo:nth-child(1){transition-delay:0.3s}
+.photos.show .photo:nth-child(2){transition-delay:0.8s}
+.photos.show .photo:nth-child(3){transition-delay:1.3s}
+.photos.show .photo{
+  opacity:1;
+  transform:scale(1);
+}
+.photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* Pop animation */
+@keyframes popPic{
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+/* Hover secret message */
+.secret{
+  position:absolute;
+  inset:0;
+  background:rgba(255,30,77,0.85);
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  font-size:0.85rem;
+  padding:10px;
+  opacity:0;
+  transition:0.4s ease;
+}
+.click-btn{
+  position:fixed;
+  top:16px;
+  right:16px;
+  background:#ff1e4d;
+  color:white;
+  padding:10px 20px;
+  border-radius:30px;
+  font-size:0.95rem;
+  cursor:pointer;
+  z-index:999;
+  box-shadow:0 6px 18px rgba(0,0,0,0.25);
+  transition:0.3s ease;
+}
+
+.click-btn:hover{
+  background:#ff4f81;
+  transform:scale(1.05);
+}
+
+.photo-card:hover .secret{
+  opacity:1;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Floating Roses -->
+<script>
+for(let i=0;i<30;i++){
+  let r=document.createElement("div");
+  r.className="rose";
+  r.innerHTML="🌹";
+  r.style.left=Math.random()*100+"vw";
+  r.style.animationDuration=(5+Math.random()*7)+"s";
+  document.body.appendChild(r);
+}
+</script>
+
+<div class="container">
+  <h1>Happy Rose Day ❤️</h1>
+
+<button onclick="handleBack()" style="margin-bottom:15px; background:rgba(255,255,255,0.25);">
+  ⬅ Back to Valentine Week
+</button>
+
+  <div class="rose-icon">🌹</div>
+
+  <p>
+    Just like this rose,  
+    my love for you grows deeper,  
+    softer, and more beautiful every day 💖
+  </p>
+
+  <button class="heart-btn" onclick="showLove()">Open My Heart 💌</button>
+
+  <div class="love" id="loveMsg">
+    You are my today,  
+    my tomorrow,  
+    and every heartbeat in between ❤️🌹
+  </div>
+</div>
+  <button id="clickBtn" class="click-btn" onclick="showPhotos()">
+  💌 Click Me
+</button>
+
+
+<!-- Photos -->
+<div class="photos" id="photos">
+  <div class="photo"><img src="rose.jpeg"></div>
+  <div class="photo"><img src="rose2.jpeg"></div>
+  <div class="photo"><img src="rose1.jpeg"></div>
+</div>
+
+
+
+<script>
+  function handleBack(){
+  const photos = document.getElementById("photos");
+
+  if(open){
+    // If photos are open, close them first
+    photos.classList.remove("show");
+    open = false;
+  }else{
+    // If already closed, go back
+    goBack();
+  }
+}
+function goBack(){
+  window.location.href = "days.html";
+}
+function showLove(){
+  document.getElementById("loveMsg").style.display="block";
+}
+let open = false;
+
+function togglePhotos(){
+  const photos = document.getElementById("photos");
+  open = !open;
+
+  if(open){
+    photos.classList.add("show");
+  }else{
+    photos.classList.remove("show");
+  }
+}
+let photosShown = false;
+
+function showPhotos(){
+  const photos = document.getElementById("photos");
+  const btn = document.getElementById("clickBtn");
+
+  if(photosShown) return; // stop multiple clicks
+
+  photos.classList.add("show");
+  photosShown = true;
+
+  // disable button
+  btn.innerText = "💖 For You";
+  btn.style.opacity = "0.6";
+  btn.style.cursor = "default";
+}
+</script>
+
+</body>
+</html>

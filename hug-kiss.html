@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hug & Kiss Day 🤗💋</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Stylish fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  height:100vh;
+  font-family:'Playfair Display', serif;
+  background: radial-gradient(circle at top,#ff7aa2,#ffd6e8,#fff0f6);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  color:#fff;
+  text-align:center;
+}
+
+/* Floating emojis */
+.float{
+  position:absolute;
+  font-size:1.6rem;
+  animation: float linear infinite;
+}
+@keyframes float{
+  from{transform:translateY(110vh)}
+  to{transform:translateY(-15vh)}
+}
+
+/* Card */
+.container{
+  background:rgba(255,255,255,0.28);
+  backdrop-filter:blur(16px);
+  padding:34px;
+  border-radius:32px;
+  width:90%;
+  max-width:420px;
+  box-shadow:0 25px 55px rgba(0,0,0,0.35);
+  animation: pop 1s ease;
+}
+@keyframes pop{
+  from{opacity:0;transform:scale(0.6)}
+  to{opacity:1;transform:scale(1)}
+}
+
+h1{
+  font-family:'Dancing Script', cursive;
+  font-size:2.6rem;
+  margin-bottom:12px;
+  color:#fff;
+  animation: glow 2s infinite alternate;
+}
+@keyframes glow{
+  from{text-shadow:0 0 6px #fff}
+  to{text-shadow:0 0 22px #ff1e4d}
+}
+
+.big{
+  font-size:4.6rem;
+  margin:12px 0;
+  animation: bounce 1.8s infinite;
+}
+@keyframes bounce{
+  50%{transform:translateY(-12px)}
+}
+
+p{
+  font-size:1.05rem;
+  margin-bottom:18px;
+  color:#fff7fb;
+}
+
+button{
+  background:#ff4f81;
+  border:none;
+  color:white;
+  padding:14px 30px;
+  border-radius:35px;
+  font-size:1rem;
+  cursor:pointer;
+  margin:6px;
+  transition:0.3s;
+}
+button:hover{transform:scale(1.12)}
+
+.back{
+  background:#ff6b9c;
+}
+.back:hover{
+  background:#ff3f81;
+}
+
+/* Envelope */
+.envelope{
+  display:none;
+  margin:20px auto;
+  width:240px;
+  background:#fff;
+  border-radius:14px;
+  position:relative;
+  animation: open 1s ease forwards;
+}
+.envelope::before{
+  content:"💌";
+  font-size:3rem;
+  position:absolute;
+  top:-28px;
+  left:50%;
+  transform:translateX(-50%);
+}
+@keyframes open{
+  from{opacity:0;transform:scale(0.5)}
+  to{opacity:1;transform:scale(1)}
+}
+
+.letter{
+  font-family:'Dancing Script', cursive;
+  color:#d6336c;
+  font-size:1.25rem;
+  padding:32px 18px;
+  line-height:1.6;
+}
+
+/* Kiss popup */
+.kissPop{
+  display:none;
+  font-family:'Dancing Script', cursive;
+  font-size:1.4rem;
+  margin-top:18px;
+  color:#c9184a;
+  animation: popKiss 0.8s ease forwards;
+}
+@keyframes popKiss{
+  from{opacity:0;transform:scale(0.5)}
+  to{opacity:1;transform:scale(1)}
+}
+
+/* Emoji burst */
+.hugBurst{
+  position:absolute;
+  font-size:2rem;
+  animation: burst 1.5s ease forwards;
+}
+@keyframes burst{
+  from{opacity:1;transform:scale(0.5)}
+  to{opacity:0;transform:translateY(-80px) scale(1.5)}
+}
+
+
+/* Side Images */
+.side-img{
+  position:fixed;
+  top:50%;
+  transform:translateY(-50%) scale(0);
+  width:220px;
+  opacity:0;
+  transition:0.6s ease;
+  z-index:15;
+  border-radius:20px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.4);
+}
+
+.left-img{ left:5%; }
+.right-img{ right:5%; }
+
+.show-img{
+  transform:translateY(-50%) scale(1);
+  opacity:1;
+}
+
+</style>
+</head>
+
+<body>
+
+<script>
+const bg=["🤗","💋","💞","😘"];
+for(let i=0;i<30;i++){
+  let f=document.createElement("div");
+  f.className="float";
+  f.innerHTML=bg[Math.floor(Math.random()*bg.length)];
+  f.style.left=Math.random()*100+"vw";
+  f.style.animationDuration=(5+Math.random()*6)+"s";
+  document.body.appendChild(f);
+}
+</script>
+
+<div class="container">
+  <h1>Hug & Kiss Day 🤗💋</h1>
+  <div class="big">🤗💋</div>
+
+  <p>Tap gently… these are filled with love 💖</p>
+
+  <button onclick="sendHug()">Send Hug 🤗</button>
+  <button onclick="sendKiss()">Send Kiss 💋</button>
+
+  <div class="envelope" id="envelope">
+    <div class="letter">
+      This hug carries all my warmth,  
+      comfort, and love —  
+      just for you 🤗❤️
+    </div>
+  </div>
+
+  <div class="kissPop" id="kissMsg">
+    💋 Mwah! A soft kiss wrapped in love 😘💖
+  </div>
+
+  <button class="back" onclick="location.href='days.html'">⬅ Back</button>
+</div>
+
+<script>
+function sendHug(){
+  document.getElementById("kissMsg").style.display="none";
+  const env=document.getElementById("envelope");
+  env.style.display="block";
+
+  for(let i=0;i<6;i++){
+    let h=document.createElement("div");
+    h.className="hugBurst";
+    h.innerHTML="🤗";
+    h.style.left=(50+Math.random()*100-50)+"%";
+    h.style.top="60%";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),1500);
+  }
+}
+function hideAllImages(){
+  const imgs=document.querySelectorAll(".side-img");
+  imgs.forEach(img=>img.classList.remove("show-img"));
+}
+function sendHug(){
+  document.getElementById("kissMsg").style.display="none";
+  document.getElementById("envelope").style.display="block";
+
+  hideAllImages();
+  document.getElementById("hugLeft").classList.add("show-img");
+  document.getElementById("hugRight").classList.add("show-img");
+
+  for(let i=0;i<6;i++){
+    let h=document.createElement("div");
+    h.className="hugBurst";
+    h.innerHTML="🤗";
+    h.style.left=(50+Math.random()*100-50)+"%";
+    h.style.top="60%";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),1500);
+  }
+}
+function sendKiss(){
+   document.getElementById("envelope").style.display="none";
+  document.getElementById("kissMsg").style.display="block";
+
+  hideAllImages();
+  document.getElementById("kissLeft").classList.add("show-img");
+  document.getElementById("kissRight").classList.add("show-img");
+
+  for(let i=0;i<6;i++){
+    let ks=document.createElement("div");
+    ks.className="hugBurst";
+    ks.innerHTML="💋";
+    ks.style.left=(50+Math.random()*100-50)+"%";
+    ks.style.top="60%";
+    document.body.appendChild(ks);
+    setTimeout(()=>ks.remove(),1500);
+  }
+
+}
+</script>
+<!-- Hug Images -->
+<img src="hug.jpeg" id="hugLeft" class="side-img left-img">
+<img src="hug1.jpeg" id="hugRight" class="side-img right-img">
+
+<!-- Kiss Images -->
+<img src="kiss1.jpeg" id="kissLeft" class="side-img left-img">
+<img src="kiss.jpeg" id="kissRight" class="side-img right-img">
+
+</body>
+</html>

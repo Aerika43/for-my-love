@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Aerika ❤️ Rishi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:#ffd6e8;
+  color:#7a1f4b;
+  overflow-x:hidden;
+}
+
+/* SECTIONS */
+section{
+  min-height:100vh;
+  padding:40px 20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+/* FIRST PAGE */
+.hero{
+  background:url("hero.jpg") center/cover no-repeat;
+  position:relative;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(255,214,232,0.7);
+}
+.hero-content{
+  position:relative;
+  z-index:2;
+}
+.hero img{
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  margin:10px;
+  object-fit:cover;
+}
+.hero h1{font-size:2.8rem}
+
+/* HEART FLOAT */
+.heart{
+  position:fixed;
+  font-size:22px;
+  animation:floatUp linear infinite;
+}
+@keyframes floatUp{
+  from{transform:translateY(100vh);opacity:1}
+  to{transform:translateY(-10vh);opacity:0}
+}
+
+/* BUTTONS */
+button{
+  padding:12px 28px;
+  border:none;
+  border-radius:30px;
+  font-size:1rem;
+  margin:10px;
+  cursor:pointer;
+}
+.yes{background:#ff5fa2;color:white}
+.no{background:white}
+
+/* QUESTIONS */
+.options button{
+  display:block;
+  width:300px;
+  margin:8px auto;
+}
+.correct{
+  background:#ff5fa2;
+  color:white;
+  transform:scale(1.15);
+}
+.wrong{opacity:.4}
+.hint{
+  display:none;
+  font-style:italic;
+  margin-top:10px;
+}
+
+/* VALENTINE WEEK GRID */
+.week{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  max-width:800px;
+}
+.day{
+  background:#ff5fa2;
+  color:white;
+  padding:30px 10px;
+  border-radius:40% 40% 50% 50%;
+  cursor:pointer;
+  animation:pulse 1.6s infinite;
+}
+.valentine-special{
+  grid-column:1/4;
+  background:#ff2f92;
+  font-size:1.2rem;
+}
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.05)}
+  100%{transform:scale(1)}
+}
+
+/* MEMORIES */
+.memories{
+  background:url("memory-bg.jpg") center/cover no-repeat;
+  position:relative;
+}
+.memories::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(255,214,232,0.8);
+}
+.memories-content{
+  position:relative;
+  z-index:2;
+}
+.memories img{
+  width:220px;
+  border-radius:18px;
+  margin:10px;
+}
+
+/* FLOATING ITEMS */
+.float{
+  position:fixed;
+  font-size:26px;
+  animation:floatUp linear infinite;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <img src="you.jpg">
+    <img src="him.jpg">
+    <h1>Will you be my Valentine? 💖</h1>
+    <button class="yes" onclick="jump('q1')">Yes 😍</button>
+    <button class="no" id="noBtn">No 🙄</button>
+  </div>
+</section>
+
+<!-- QUESTIONS -->
+<section id="q1">
+<h2>Who loves more? 💖</h2>
+<div class="options" data-correct="1" data-hint="Hmm… think about who made this whole website 😌">
+<button>Me (but Aerika is close)</button>
+<button>Aerika (and I’m lucky 🥹)</button>
+<button>Both of us equally</button>
+<button>Still calculating</button>
+</div>
+<p class="hint"></p>
+<button onclick="jump('q2')">Next 💕</button>
+</section>
+
+<section id="q2">
+<h2>Do you miss Aerika right now? 😏</h2>
+<div class="options" data-correct="2" data-hint="Even when she’s right there… 😉">
+<button>Sometimes</button>
+<button>Only at night</button>
+<button>I miss her even when I’m with her</button>
+<button>Why are you asking</button>
+</div>
+<p class="hint"></p>
+<button onclick="jump('q3')">Next 😌</button>
+</section>
+
+<section id="q3">
+<h2>If she appeared right now… 🔥</h2>
+<div class="options" data-correct="0" data-hint="First instinct matters 👀">
+<button>Hug her tight</button>
+<button>Kiss her</button>
+<button>Smile silently</button>
+<button>All of the above</button>
+</div>
+<p class="hint"></p>
+<button onclick="jump('q4')">Next 💕</button>
+</section>
+
+<section id="q4">
+<h2>Are you choosing Aerika forever? 🥹</h2>
+<div class="options" data-correct="3" data-hint="You already know the answer 🙄❤️">
+<button>Today</button>
+<button>Tomorrow</button>
+<button>For now</button>
+<button>Why is this even a question</button>
+</div>
+<p class="hint"></p>
+<button onclick="jump('q5')">Final 💍</button>
+</section>
+
+<section id="q5">
+<h2>Promise test 😌</h2>
+<div class="options" data-correct="2" data-hint="This one sounds permanent ❤️">
+<button>Yes</button>
+<button>Obviously yes</button>
+<button>I already signed the contract</button>
+<button>I’ll think about it</button>
+</div>
+<p class="hint"></p>
+<button onclick="jump('week')">Valentine Week 🌹</button>
+</section>
+
+<!-- VALENTINE WEEK -->
+<section id="week">
+<h2>Valentine Week 💘</h2>
+<div class="week">
+<div class="day" onmouseenter="spawn('🌹')" onclick="jump('rose')">7 Feb<br>Rose Day</div>
+<div class="day" onclick="jump('propose')">8 Feb<br>Propose Day</div>
+<div class="day" onclick="jump('choco')">9 Feb<br>Chocolate Day</div>
+<div class="day" onclick="jump('teddy')">10 Feb<br>Teddy Day</div>
+<div class="day" onclick="jump('promise')">11 Feb<br>Promise Day</div>
+<div class="day" onclick="jump('hugkiss')">12–13 Feb<br>Hug & Kiss</div>
+<div class="day valentine-special" onclick="jump('valentine')">
+14 Feb ❤️ Valentine’s Day<br>
+✨ A day I choose you again ✨
+</div>
+</div>
+</section>
+
+<!-- DAY PAGES -->
+<section id="rose"><h2>🌹 Rose Day</h2><p>Every rose reminds me of you.</p></section>
+<section id="propose"><h2>💍 Propose Day</h2><p>Will you be mine forever?</p></section>
+<section id="choco"><h2>🍫 Chocolate Day</h2><p>Sweeter than chocolates — that’s you.</p></section>
+<section id="teddy"><h2>🧸 Teddy Day</h2><p>Your hug is my favorite comfort.</p></section>
+
+<section id="promise">
+<h2>🤞 My Promises</h2>
+<p>1. I choose you every day.</p>
+<p>2. I’ll hold your hand in hard times.</p>
+<p>3. I’ll respect your heart.</p>
+<p>4. I’ll grow with you.</p>
+<p>5. I’ll protect our love.</p>
+<p>6. I’ll listen.</p>
+<p>7. I’ll laugh with you.</p>
+<p>8. I’ll stand by you.</p>
+<p>9. I’ll love you loudly.</p>
+<p>10. Forever means us.</p>
+</section>
+
+<section id="hugkiss">
+<h2>🤗 Hug & 💋 Kiss Day</h2>
+<!-- Add hugging/kissing videos or memes here -->
+<p>Some hugs heal everything.</p>
+</section>
+
+<section id="valentine">
+<h2>❤️ Valentine’s Day</h2>
+<p>Not just today. Every day. With you.</p>
+</section>
+
+<!-- MEMORIES -->
+<section class="memories">
+<div class="memories-content">
+<h2>Our Memories 💕</h2>
+<img src="pic1.jpg">
+<img src="pic2.jpg">
+<img src="pic3.jpg">
+</div>
+</section>
+
+<script>
+/* NO button runs */
+const noBtn=document.getElementById("noBtn");
+noBtn.addEventListener("mouseover",()=>{
+  noBtn.style.position="absolute";
+  noBtn.style.left=Math.random()*80+"vw";
+  noBtn.style.top=Math.random()*80+"vh";
+});
+
+/* Question logic */
+document.querySelectorAll(".options").forEach(opt=>{
+  const correct=opt.dataset.correct;
+  const hint=opt.nextElementSibling;
+  const hintText=opt.dataset.hint;
+  opt.querySelectorAll("button").forEach((b,i)=>{
+    b.onclick=()=>{
+      opt.querySelectorAll("button").forEach(x=>x.classList.add("wrong"));
+      opt.children[correct].classList.add("correct");
+      hint.textContent=i==correct?"Correct 😌❤️":hintText;
+      hint.style.display="block";
+    }
+  })
+});
+
+/* Scroll */
+function jump(id){
+  document.getElementById(id).scrollIntoView({behavior:"smooth"});
+}
+
+/* Floating items */
+function spawn(icon){
+  for(let i=0;i<25;i++){
+    let e=document.createElement("div");
+    e.className="float";
+    e.innerHTML=icon;
+    e.style.left=Math.random()*100+"vw";
+    e.style.animationDuration=(Math.random()*3+3)+"s";
+    document.body.appendChild(e);
+    setTimeout(()=>e.remove(),6000);
+  }
+}
+</script>
+
+</body>
+</html>

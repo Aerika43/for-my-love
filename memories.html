@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Memories</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  position:relative;
+  background:url('car1.jpeg') center/cover no-repeat fixed;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+ min-height:100vh;
+padding:40px 20px;
+justify-content:flex-start;
+
+  font-family:'Poppins',sans-serif;
+  color:white;
+}
+
+body::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.35);
+  z-index:0;
+  pointer-events: none;
+
+}
+
+
+/* Dark overlay */
+
+
+/* Title */
+h1{
+  font-family:'Dancing Script',cursive;
+  font-size:3rem;
+  margin-bottom:30px;
+  position: relative;
+  z-index: 2;
+  text-shadow:0 0 15px rgba(255,255,255,0.8);
+  animation: fadeTitle 2s ease;
+}
+
+@keyframes fadeTitle{
+  from{opacity:0; transform:translateY(-20px)}
+  to{opacity:1; transform:translateY(0)}
+}
+
+/* Gallery Grid */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:20px;
+  max-width:750px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Image container */
+.photo{
+  position:relative;
+  overflow:hidden;
+  border-radius:20px;
+  cursor:pointer;
+}
+
+.photo img{
+  width:220px;
+  height:220px;
+  object-fit:cover;
+  border-radius:20px;
+  transition:0.4s ease;
+}
+
+/* Hover zoom */
+.photo:hover img{
+  transform:scale(1.1);
+  filter:brightness(0.6);
+}
+
+/* Secret message */
+.secret{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) scale(0);
+  font-family:'Dancing Script',cursive;
+  font-size:1.5rem;
+  text-align:center;
+  opacity:0;
+  transition:0.4s ease;
+  padding:10px;
+}
+
+.photo:hover .secret{
+  transform:translate(-50%,-50%) scale(1);
+  opacity:1;
+}
+
+/* Button */
+.back-btn{
+  display:inline-block;
+  margin-top:30px;
+  padding:12px 25px;
+  border-radius:30px;
+  background:#ff4f81;
+  color:white;
+  font-size:1rem;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.back-btn:hover{
+  background:#ff1e4d;
+  transform:scale(1.1);
+}
+
+
+</style>
+</head>
+
+<body>
+
+<h1>Memories</h1>
+
+<div class="gallery">
+
+  <div class="photo">
+    <img src="us.jpeg">
+    <div class="secret">Our first smile together</div>
+  </div>
+
+  <div class="photo">
+    <img src="couple.jpeg">
+    <div class="secret">The day I knew</div>
+  </div>
+
+  <div class="photo">
+    <img src="cute.jpeg">
+    <div class="secret">Forever starts here</div>
+  </div>
+
+  <div class="photo">
+    <img src="car.jpeg">
+    <div class="secret">You & Me always</div>
+  </div>
+
+  <div class="photo">
+    <img src="kisses.jpeg">
+    <div class="secret">My favorite memory</div>
+  </div>
+
+  <div class="photo">
+    <img src="car1.jpeg">
+    <div class="secret">Pure happiness</div>
+  </div>
+
+  <div class="photo">
+    <img src="kiss3.jpeg">
+    <div class="secret">Stolen kisses</div>
+  </div>
+
+  <div class="photo">
+    <img src="hug.jpeg">
+    <div class="secret">Holding you forever</div>
+  </div>
+
+  <div class="photo">
+    <img src="hug1.jpeg">
+    <div class="secret">My heart chose you</div>
+  </div>
+
+</div>
+
+<a href="days.html" class="back-btn">⬅ Back</a>
+
+</body>
+</html>
